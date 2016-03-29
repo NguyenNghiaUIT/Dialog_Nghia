@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyDialog">
+        <attr name="backgroundColor" format="color"/>
+        <attr name="shadowColor" format="color"/>
+        <attr name="layoutContent" format="reference"/>
+        <attr name="titleColor" format="color" />
+    </declare-styleable>
+</resources>

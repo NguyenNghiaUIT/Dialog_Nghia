@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="NDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <!--<item name="shadowColor">#c91717</item>-->
+        <item name="backgroundColor">#2c8f75</item>
+        <item name="layoutContent">@layout/dl_content_layout</item>
+        <item name="titleColor">#2e0aa4</item>
+    </style>
 </resources>

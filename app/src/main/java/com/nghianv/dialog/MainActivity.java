@@ -1,73 +1,55 @@
 package com.nghianv.dialog;
-
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.*;
-import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.jar.Manifest;
+
 
 public class MainActivity extends AppCompatActivity {
-
     private final String TAG = MainActivity.class.getSimpleName();
-    private Button btnShow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final Dialog dialog = new Dialog.Builder(this)
-                .setGravity(Gravity.CENTER)
-                .setTitle("Thông báo")
-                .setMessage("Bạn có muốn thoát không, Yes or No?")
-                .setPositiveButton("OK", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                    }
-                })
-                .setNegativeButton("Cancle", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                })
-                //.setView(R.layout.dl_content_layout)
-                .build();
-
-//        Button btnDismis = (Button)dialog.findViewById(R.id.login);
-//        btnDismis.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.dismiss();
-//            }
-//        });
 
 
+        View[] view = new View[4];
+        for(int i =0; i < view.length; i++){
+            Log.i(TAG, "" + view);
+        }
 
-        btnShow = (Button)findViewById(R.id.btnShow);
-        btnShow.setOnClickListener(new View.OnClickListener() {
+        ListView lvContacts = (ListView)findViewById(R.id.lvContacts);
+        final List<String> _data = new ArrayList<>();
+        for(int i = 0; i < 20; i++){
+            _data.add("Item " + i);
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, _data);
+        if(adapter != null)
+            lvContacts.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        lvContacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                // dialog.show();
-                dialog.show();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
             }
         });
 
-
-
-
-
-
-
-
-
-//        dialog.show();
-//        dialog.dismiss();
     }
 
 }
